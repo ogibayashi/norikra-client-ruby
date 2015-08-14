@@ -101,6 +101,14 @@ class Norikra::Client
       end
     end
 
+    desc "replace QUERY_NAME QUERY_EXPRESSION", "replace exising QUERY_NAME to new one."
+    option :group, :type => :string, :default => nil, :desc => "query group for sweep/listen (default: null)", :aliases => "-g"
+    def replace(query_name, expression)
+      wrap do
+        client(parent_options).replace(query_name, options[:group], expression)
+      end
+    end
+    
     desc "remove QUERY_NAME", "deregister a query"
     def remove(query_name)
       wrap do

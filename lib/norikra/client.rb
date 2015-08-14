@@ -49,6 +49,10 @@ module Norikra
       @client.call(:deregister, query_name)
     end
 
+    def replace(query_name, query_group, query_expression)
+      @client.call(:replace, query_name, query_group, query_expression)
+    end
+    
     def suspend(query_name)
       @client.call(:suspend, query_name)
     end
